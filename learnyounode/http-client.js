@@ -9,4 +9,4 @@ http.get(url, function(response) {
   response.on('error', function(error) {
     console.log(error);
   });
-});
+}};
