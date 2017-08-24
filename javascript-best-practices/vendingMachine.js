@@ -16,9 +16,13 @@ module.exports = {
   },
 
   releaseChange: function(){
-    var currentBalance = this.getBalance();
-    productInventory.decreaseBalance(currentBalance);
+    var currentBalance = balanceManager.getBalance();
+    balanceManager.decreaseBalance(currentBalance);
     return changeHandler.convertToChange(currentBalance);
+  },
+
+  getProducts: function() {
+    return products;
   }
 
 };
