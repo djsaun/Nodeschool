@@ -5,12 +5,18 @@ module.exports = {
     // [n]ickel
     // [d]ime
     // [q]uarter
-    switch(coinType){
-      case 'p': return 1;
-      case 'n': return 5;
-      case 'd': return 10;
-      case 'q': return 25;
-      default: throw new Error('Unrecognized coin ' + coinType);
+
+    const coins = {
+      'p': 1,
+      'n': 5,
+      'd': 10,
+      'q': 25
+    };
+
+    if (coins[coinType]) {
+      return coins[coinType];
+    } else {
+      throw new Error('Unrecognized coin ' + coinType);
     }
   }
 };
