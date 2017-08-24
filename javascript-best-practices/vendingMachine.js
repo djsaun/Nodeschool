@@ -16,22 +16,9 @@ balanceManager.decreaseBalance();
 balanceManager.getBalance();
 balanceManager.increaseBalance();
 
-module.exports = {
+changeHandler.getAmount();
 
-  getAmount: function(coinType) {
-    // COINS:
-    // [p]enny
-    // [n]ickel
-    // [d]ime
-    // [q]uarter
-    switch(coinType){
-      case 'p': return 1;
-      case 'n': return 5;
-      case 'd': return 10;
-      case 'q': return 25;
-      default: throw new Error('Unrecognized coin ' + coinType);
-    }
-  },
+module.exports = {
 
   getProducts: function() {
     return products;
@@ -39,6 +26,12 @@ module.exports = {
 
   getProduct: function(productId) {
     var product = products.find(function(p) { return p.id === productId; });
+    return product;
+  },
+
+  vendProduct: function(productId){
+    var product = this.getProduct(productId);
+    this.decreaseBalance(product.price);
     return product;
   },
 
@@ -59,12 +52,6 @@ module.exports = {
     var currentBalance = this.getBalance();
     this.decreaseBalance(currentBalance);
     return this.convertToChange(currentBalance);
-  },
-
-  vendProduct: function(productId){
-    var product = this.getProduct(productId);
-    this.decreaseBalance(product.price);
-    return product;
   }
 
 };
